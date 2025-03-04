@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Currículo Online</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #0063ce;
+            --accent-color: #17a2b8;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+        }
+
+        .profile-section {
+            background-color: #f2f7fa;
+            padding: 3rem 0;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 2px solid white;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background-color: var(--primary-color);
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            width: 16px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .portfolio-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .portfolio-item img {
+            object-fit: cover;
+            height: 250px;
+            width: 100%;
+        }
+
+        .project-category {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .project-tag {
+            background-color: #e9ecef;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            color: #495057;
+        }
+
+        .footer {
+            background-color: #4146a1;
+            color: white;
+            padding: 2rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><h2>Jonas Monticelli</h2> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experiencia">Experiência</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#educacao">Educação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#habilidades">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfólio</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- <a class="nav-link" href="#contato">Contato</a> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="profile-section" id="sobre">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <img src="Imagens/perfil.jpg" alt="Perfil" class="profile-img mb-4">
+                </div>
+                <div class="col-md-8">
+                    <h2 class="display-4 fw-bold">JONAS MONTICELLI DA SILVA</h2>
+                    <p class="fs-4 text-secondary mb-3">Desenvolvedor Unity / UX Designer</p>
+                    <p class="lead mb-4">
+                        Desenvolvedor Unity experiente e especialista em Realidade Virtual, com foco em criação de
+                        simulações médicas imersivas e visualização de dados para Meta Quest.
+                        Possuo habilidades avançadas em desenvolvimento de jogos e aplicações VR, otimização de
+                        desempenho e integração de hardware VR.
+                        Apaixonado por criar mundos virtuais interativos e inovadores que desafiam os limites da
+                        tecnologia e proporcionam experiências únicas aos usuários.
+                    </p>
+                    <div class="contact-info mb-4">
+                        <p><i class="fas fa-envelope"></i> jonasmonticelli2014@live.com</p>
+                        <p><i class="fas fa-phone"></i> (51) 99571-3008</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Osório, RS - Brasil</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-5" id="experiencia">
+        <div class="container">
+            <h2 class="section-title">Experiência Profissional</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Bolsista do Programa de Pós-Graduação em Computação</h4>
+                    <p class="text-muted">Universidade Federal do Rio Grande do Sul| Mai 2022 - Mai 2024</p>
+                    <p>
+                        Atuei como bolsista da CAPES com dedicação exclusiva, conduzindo pesquisa na área de
+                        Interação Humano-Computador, com foco especı́fico em simulação de cirurgia utilizando
+                        Realidade Virtual. Durante esse perı́odo, desenvolvi habilidades avançadas em
+                        tecnologias de simulação e colaborei em um projeto que resultou na publicação de um
+                        trabalho cientı́fico.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Designer Gráfico</h4>
+                    <p class="text-muted">G4 Artes Gráficas | Jul 2016 - Dez 2016</p>
+                    <p>
+                        Trabalhei na criação de logomarcas, cartões de visita, convites, banners, talões de notas,
+                        panfletos
+                        e adesivos.
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-5 bg-light" id="educacao">
+        <div class="container">
+            <h2 class="section-title">Educação</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Mestrado em Ciência da Computação</h4>
+                    <p class="text-muted">Universidade Federal do Rio Grande do Sul| Porto Alegre - RS | 2022 - 2025</p>
+                    <p>
+                        Especialização na área de Interação Humano-Computador com foco em Realidade Virtual.
+                        Tese sobre simulação imersiva para treinamento em endoscopia e visualização de dados
+                        cirúrgicos.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Graduação em Análise e Desenvolvimento de Sistemas </h4>
+                    <p class="text-muted">Instituto Federal do rio Grande do Sul | Osório - RS | 2014 - 2018</p>
+                    <p>
+                        Formação em programação, banco de dados, engenharia de software, desenvolvimento mobile e
+                        desenvolvimento web.
+                        Participação em projeto iniciação científica com foco em realidade aumentada.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-5" id="habilidades">
+        <div class="container">
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Flutter</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Node.js</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>UI/UX Design</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>PHP/MySQL</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>C#</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Git/GitHub</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <h3 class="mb-4">Outras Habilidades</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Modelagem 3D e
+                                animação com Blender</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Design Gráfico</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Adobe Photoshop, GIMP
+                                e
+                                Corel Draw</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Testes e Debugging
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Desenvolvimento de
+                                interfaces de Realidade Virtual</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Idiomas -->
+                <div class="mt-5">
+                    <h3 class="mb-4">Idiomas</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Português</span>
+                                    <span>Nativo</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Inglês</span>
+                                    <span>Avançado</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Italiano</span>
+                                    <span>Básico</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfólio -->
+        <div class="container py-5" id="portfolio">
+            <h2 class="section-title">Meus Projetos</h2>
+
+            <div class="row">
+                <!-- Projeto 1 -->
+                <div class="col-md-4">
+                    <div class="card portfolio-item">
+                        <img src="Imagens/simulador.png" class="card-img-top" alt="Projeto Dashboard">
+                        <div class="card-body">
+                            <h5 class="card-title">Simulador de Endoscopia em Realidade Virtual</h5>
+                            <p class="project-category">Desenvolvimento Unity</p>
+                            <p class="card-text">Simulador imersivo para treinamento de endoscopia em realidade virtual</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity 3D</span>
+                                <span class="project-tag">Meta SDK</span>
+                                <span class="project-tag">C#</span>
+                            </div>
+                            <a href="#" class="btn btn-primary mt-3">
+                                <i class="fas fa-eye me-2"></i>Ver Projeto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="col-md-4">
+                    <div class="card portfolio-item">
+                        <img src="Imagens/dados.png" class="card-img-top" alt="Projeto E-commerce">
+                        <div class="card-body">
+                            <h5 class="card-title">Ferramenta para visualização de dados imersiva</h5>
+                            <p class="project-category">Desenvolvimento Unity</p>
+                            <p class="card-text">Ferramenta imersiva para coleta e visualização de dados em linha do tempo que auxilia no debriefing das sessões de treinamento de endoscopia</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Unity 3D</span>
+                                <span class="project-tag">Meta SDK</span>
+                                <span class="project-tag">Json</span>
+                                <span class="project-tag">C#</span>
+                            </div>
+                            <a href="https://dl.acm.org/doi/10.1145/3625008.3625038" class="btn btn-primary mt-3">
+                                <i class="fas fa-eye me-2"></i>Ver Projeto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="col-md-4">
+                    <div class="card portfolio-item">
+                        <img src="Imagens/konekto.png" class="card-img-top" alt="Aplicativo de Gestão">
+                        <div class="card-body">
+                            <h5 class="card-title">Aplicativo Konekto</h5>
+                            <p class="project-category">Desenvolvimento Mobile</p>
+                            <p class="card-text">Conceito de aplicação mobile de gerenciamento de grupos de caronas.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Fabapp</span>
+                                <!-- <span class="project-tag">Firebase</span> -->
+                                <span class="project-tag">Mobile App</span>
+                            </div>
+                            <a href="https://app.vc/konekto" class="btn btn-primary mt-3">
+                                <i class="fas fa-eye me-2"></i>Ver Projeto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <footer class="bg-dark text-white text-center py-3">
+            <div class="container">
+                <p class="mb-0">&copy; 2024 Jonas Monticelli. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
